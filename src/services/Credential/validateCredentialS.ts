@@ -2,12 +2,12 @@ import { Credential } from "../../entities/Credential";
 import credentialRepository from "../../repositories/CredentialRepository";
 
 export const validateCredentialS = async (
-  username: string,
+  identifier: string,
   password: string
 ): Promise<Credential | null> => {
   // Buscar la credencial en la base de datos
   const credential = await credentialRepository.findOne({
-    where: { username },
+    where: { identifier },
   });
 
   // Verificar si la credencial existe y si la contraseña coincide
