@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-const Arouter:Router = Router();
+const Arouter: Router = Router();
 
 import { getAllUser } from "../controllers/Users/getAllUser";
 
@@ -14,19 +14,19 @@ import { loginUser } from "../controllers/Users/loginUser";
 
 //obtener todos los usuarios
 
-Arouter.get("/users",getAllUser);
+Arouter.get("/users", getAllUser);
 
 //obtener usuario por ID
 
-Arouter.get("/user/:id",getUserById);
+Arouter.get("/user/:id", getUserById);
 
 //crear un usuario
 
-Arouter.post("/users",createUser);
+Arouter.post("/users/register", createUser);
 
 //borrar un usuario
 
-Arouter.delete("/user/:id",deleteUser);
+Arouter.delete("/user/:id", deleteUser);
 
 //loguear un usuario
 
