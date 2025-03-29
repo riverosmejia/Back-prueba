@@ -27,6 +27,7 @@ export const AppDataSource = new DataSource({
   entities: [User, Appointment, Credential],
   subscribers: [],
   migrations: [],
+  ssl: true,
 });
 
 export const getRepository = <Entity>(entity: new () => Entity) => {
