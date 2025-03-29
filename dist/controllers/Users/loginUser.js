@@ -13,36 +13,20 @@ exports.loginUser = void 0;
 const LoginUserS_1 = require("../../services/User/LoginUserS");
 const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { identifier, password } = req.body;
-        if (!identifier || !password) {
-            res
-                .status(400)
-                .json({ message: "Nombre de usuario y contraseña son requeridos" });
-            return;
+        const { username, password } = req.body;
+        if (!username || !password) {
+            res.status(400).json({ message: 'Nombre de usuario y contraseña son requeridos' });
+            return; //para aquí malvado;
         }
-        const credential = yield (0, LoginUserS_1.loginUserS)(identifier, password);
+        const credential = yield (0, LoginUserS_1.loginUserS)(username, password);
         if (!credential) {
-            res.status(401).json({ message: "Usuario o contraseña incorrectos" });
-            return;
+            res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+            return; //para aquí malvado;
         }
-        // Formatear la respuesta
-        const response = {
-            login: true,
-            user: {
-                id: credential.id,
-                name: credential.name,
-                email: credential.email,
-                birthdate: credential.birthdate,
-                nDni: credential.nDni,
-            },
-        };
-        res.status(200).json(response);
+        res.status(200).json(credential);
     }
     catch (error) {
-        res.status(500).json({
-            message: "Error en el servidor",
-            error: error.message,
-        });
+        res.status(500).json({ message: 'Error en el servidor', error: error.message });
     }
 });
 exports.loginUser = loginUser;

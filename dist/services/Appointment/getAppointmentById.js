@@ -17,15 +17,16 @@ const AppointmentRepository_1 = __importDefault(require("../../repositories/Appo
 const getAppointmentByIdS = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const appointment = yield AppointmentRepository_1.default.findOne({
         where: { id },
-        relations: ["user"], // Cargar la relación con el usuario
+        relations: ['user'], // Cargar la relación con el usuario
     });
     if (appointment) {
         return {
             id: appointment.id,
             date: appointment.date,
             time: appointment.time, // Almacena como string
-            status: appointment.status === "active", // Convierte a booleano
-            Asunto: appointment.Asunto,
+            user: appointment.user, // ID del usuario relacionado
+            status: appointment.status === 'active', // Convierte a booleano
+            Asunto: appointment.Asunto
         };
     }
     return null; // Retorna null si no se encuentra la cita

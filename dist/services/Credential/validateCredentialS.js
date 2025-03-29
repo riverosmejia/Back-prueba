@@ -17,7 +17,7 @@ const CredentialRepository_1 = __importDefault(require("../../repositories/Crede
 const validateCredentialS = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
     // Buscar la credencial en la base de datos
     const credential = yield CredentialRepository_1.default.findOne({
-        where: { username },
+        where: { username }
     });
     // Verificar si la credencial existe y si la contraseña coincide
     if (credential && credential.password === password) {

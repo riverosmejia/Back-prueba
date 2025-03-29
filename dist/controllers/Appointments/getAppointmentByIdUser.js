@@ -18,7 +18,7 @@ const getAppointmentByIdUser = (req, res) => __awaiter(void 0, void 0, void 0, f
         res.status(200).json(appointments);
     }
     else {
-        res.status(404).json({ message: "Turnos de Usuario no Encontrado" });
+        res.status(404).json({ message: 'Turnos de Usuario no Encontrado' });
     }
 });
 exports.getAppointmentByIdUser = getAppointmentByIdUser;

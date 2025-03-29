@@ -1,6 +1,7 @@
 interface I_Credential {
-  username: string;
-  password: string;
+
+    username: string;
+    password: string;
 }
 
-export default I_Credential;
+export default  I_Credential;

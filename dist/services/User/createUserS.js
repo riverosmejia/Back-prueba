@@ -23,26 +23,23 @@ const createUserS = (userData) => __awaiter(void 0, void 0, void 0, function* ()
     yield queryRunner.startTransaction();
     try {
         // Verificar si ya existe un usuario con el mismo DNI
-        const existingUser = yield UserRepository_1.default.findOne({
-            where: { nDni: userData.nDni },
-        });
+        const existingUser = yield UserRepository_1.default.findOne({ where: { nDni: userData.nDni } });
         if (existingUser) {
             return "este Dni ya ha sido registrado perro";
         }
-        const existingUser_ = yield UserRepository_1.default.findOne({
-            where: { email: userData.email },
-        });
+        const existingUser_ = yield UserRepository_1.default.findOne({ where: { email: userData.email } });
         if (existingUser_) {
             return "este Email ya ha sido registrado perro";
         }
         // Crear el usuario
-        const user = (yield queryRunner.manager.save(UserRepository_1.default.create({
+        const user = yield queryRunner.manager.save(UserRepository_1.default.create({
             name: userData.name,
             email: userData.email,
             birthdate: userData.birthdate,
             nDni: userData.nDni,
             role: userData.role,
-        })));
+            password: userData.password,
+        }));
         // Crear la credencial asociando el userId
         const credential = yield (0, createCredentialS_1.createCredentialS)(userData.email, userData.password, null);
         // Asignar el ID de la credencial al usuario

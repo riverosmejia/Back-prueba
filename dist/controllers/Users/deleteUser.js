@@ -17,17 +17,10 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const userId = parseInt(id);
         console.log(id);
         yield (0, deleteUser_1.deleteUserS)(userId);
-        res
-            .status(200)
-            .json({ message: "Usuario eliminado... como mis ganas de vivir" });
+        res.status(200).json({ message: "Usuario eliminado... como mis ganas de vivir" });
     }
     catch (error) {
-        res
-            .status(500)
-            .json({
-            message: "Error en el servidor",
-            error: error.message,
-        });
+        res.status(500).json({ message: 'Error en el servidor', error: error.message });
     }
 });
 exports.deleteUser = deleteUser;

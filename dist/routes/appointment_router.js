@@ -7,9 +7,9 @@ const cancelAppointment_1 = require("../controllers/Appointments/cancelAppointme
 const getAppointmentByIdUser_1 = require("../controllers/Appointments/getAppointmentByIdUser");
 const getAllAppointments_1 = require("../controllers/Appointments/getAllAppointments");
 const appointmentRouter = (0, express_1.Router)();
-appointmentRouter.get("/appointments", getAllAppointments_1.getAllAppointments);
-appointmentRouter.get("/appointments/:id", getAppointmentById_1.getAppointmentById);
-appointmentRouter.post("/appointments/schedule", scheduleAppointment_1.scheduleAppointment);
-appointmentRouter.put("/appointments/cancel/:id", cancelAppointment_1.cancelAppointment);
-appointmentRouter.get("/appointments/user/:id", getAppointmentByIdUser_1.getAppointmentByIdUser);
+appointmentRouter.get('/appointments', getAllAppointments_1.getAllAppointments);
+appointmentRouter.get('/appointment/:id', getAppointmentById_1.getAppointmentById);
+appointmentRouter.post('/appointments/schedule', scheduleAppointment_1.scheduleAppointment);
+appointmentRouter.put('/appointments/cancel/:id', cancelAppointment_1.cancelAppointment);
+appointmentRouter.get('/appointments/user/:id', getAppointmentByIdUser_1.getAppointmentByIdUser);
 exports.default = appointmentRouter;

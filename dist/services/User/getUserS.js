@@ -15,11 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserS = void 0;
 const UserRepository_1 = __importDefault(require("../../repositories/UserRepository"));
 const getUserS = () => __awaiter(void 0, void 0, void 0, function* () {
-    const users = (yield UserRepository_1.default.find({
+    const users = yield UserRepository_1.default.find({
         relations: {
-            appointments: true,
-        },
-    }));
+            credential: true,
+            appointments: true
+        }
+    });
     return users;
 });
 exports.getUserS = getUserS;

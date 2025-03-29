@@ -1,14 +1,19 @@
 import { User } from "../../entities/User";
 import userRepository from "../../repositories/UserRepository";
 
-export const getUserByIdS = async (id: number): Promise<User | null> => {
-  const user: User | null = (await userRepository.findOne({
-    where: { id },
+export const getUserByIdS = async (id: number):Promise<User|null>=> {
 
-    relations: {
-      appointments: true,
-    },
-  })) as User | null;
+    const user:User|null = await userRepository.findOne({
+    
+        where:{id},
+        
+        relations:{ 
 
-  return user;
+            credential:true
+
+        }
+        
+    })as User | null;
+    
+    return user;
 };

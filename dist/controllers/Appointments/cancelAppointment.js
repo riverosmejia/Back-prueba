@@ -13,14 +13,13 @@ exports.cancelAppointment = void 0;
 const cancelAppointmentS_1 = require("../../services/Appointment/cancelAppointmentS");
 const cancelAppointment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    console.log(id);
     const Id = parseInt(id);
     const canceledAppointment = yield (0, cancelAppointmentS_1.cancelAppointmentS)(Id);
     if (canceledAppointment) {
         res.status(200).json(canceledAppointment);
     }
     else {
-        res.status(404).json({ message: "Turno no encontrado" });
+        res.status(404).json({ message: 'Turno no encontrado' });
     }
 });
 exports.cancelAppointment = cancelAppointment;

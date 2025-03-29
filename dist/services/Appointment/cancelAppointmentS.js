@@ -16,12 +16,10 @@ exports.cancelAppointmentS = void 0;
 const Appointment_1 = require("../../entities/Appointment");
 const AppointmentRepository_1 = __importDefault(require("../../repositories/AppointmentRepository"));
 const cancelAppointmentS = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const appointment = (yield AppointmentRepository_1.default.findOneBy({
-        id,
-    }));
+    const appointment = yield AppointmentRepository_1.default.findOneBy({ id });
     if (appointment) {
         appointment.status = Appointment_1.AppointmentStatus.CANCELLED; // Cambia el estado a "cancelled"
-        const result = (yield AppointmentRepository_1.default.save(appointment));
+        const result = yield AppointmentRepository_1.default.save(appointment);
         return result;
     }
     return null;

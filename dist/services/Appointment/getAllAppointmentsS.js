@@ -17,15 +17,20 @@ const Appointment_1 = require("../../entities/Appointment");
 const AppointmentRepository_1 = __importDefault(require("../../repositories/AppointmentRepository"));
 const getAllAppointmentsS = () => __awaiter(void 0, void 0, void 0, function* () {
     // Cargar las relaciones con 'user'
-    const appointments = (yield AppointmentRepository_1.default.find({
-        relations: ["user"], // Incluye la relación con 'user'
-    }));
-    return appointments.map((app) => ({
+    const appointments = yield AppointmentRepository_1.default.find({
+        relations: ['user'], // Incluye la relación con 'user'
+    });
+    return appointments.map(app => ({
         id: app.id,
+        user: {
+            id: app.user.id,
+            name: app.user.name,
+            email: app.user.email
+        },
         date: app.date,
         time: app.time, // Mantiene el tiempo como string (importante)
         status: app.status === Appointment_1.AppointmentStatus.ACTIVE,
-        Asunto: app.Asunto,
+        Asunto: app.Asunto
     }));
 });
 exports.getAllAppointmentsS = getAllAppointmentsS;

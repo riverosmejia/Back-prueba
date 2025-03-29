@@ -10,35 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginUserS = void 0;
-const appDataSource_1 = require("../../config/appDataSource");
-const Credential_1 = require("../../entities/Credential");
-const loginUserS = (identifier, password) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const credentialRepository = appDataSource_1.AppDataSource.getRepository(Credential_1.Credential);
-        // Buscar la credencial del usuario por username
-        const credential = yield credentialRepository.findOne({
-            where: { username: identifier },
-            relations: ["user"], // Cargar la relación con User
-        });
-        if (!credential || !credential.user) {
-            return null;
-        }
-        // Verificar la contraseña sin bcrypt
-        if (credential.password !== password) {
-            return null;
-        }
-        // Retornar solo los datos necesarios del usuario
-        return {
-            id: credential.user.id,
-            name: credential.user.name,
-            email: credential.user.email,
-            birthdate: credential.user.birthdate,
-            nDni: credential.user.nDni,
-        };
+const validateCredentialS_1 = require("../Credential/validateCredentialS");
+const loginUserS = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
+    // Validar las credenciales
+    const credential = yield (0, validateCredentialS_1.validateCredentialS)(username, password);
+    if (!credential) {
+        return null; // Si las credenciales no son válidas, retornar null
     }
-    catch (error) {
-        console.error("Error en el servicio de login:", error);
-        throw new Error("Error al intentar autenticar al usuario");
-    }
+    return credential; // Retornar el usuario o null si no se encuentra
 });
 exports.loginUserS = loginUserS;

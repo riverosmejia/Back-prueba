@@ -18,7 +18,7 @@ const getAppointmentById = (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.status(200).json(appointment);
     }
     else {
-        res.status(404).json({ message: "Turno no encontrado" });
+        res.status(404).json({ message: 'Turno no encontrado' });
     }
 });
 exports.getAppointmentById = getAppointmentById;

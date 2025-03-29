@@ -20,16 +20,11 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res.json(user);
         }
         else {
-            res.status(404).json({ message: "Usuario no encontrado" });
+            res.status(404).json({ message: 'Usuario no encontrado' });
         }
     }
     catch (error) {
-        res
-            .status(500)
-            .json({
-            message: "Error en el servidor",
-            error: error.message,
-        });
+        res.status(500).json({ message: 'Error en el servidor', error: error.message });
     }
 });
 exports.getUserById = getUserById;

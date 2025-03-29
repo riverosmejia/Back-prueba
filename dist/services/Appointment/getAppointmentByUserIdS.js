@@ -21,6 +21,7 @@ const getAppointmentsByUserIdS = (userId) => __awaiter(void 0, void 0, void 0, f
                 id: userId, // Filtra por la relación con User
             },
         },
+        relations: ['user'], // Carga la relación con el usuario
     });
     return appointments; // Devuelve los appointments encontrados
 });

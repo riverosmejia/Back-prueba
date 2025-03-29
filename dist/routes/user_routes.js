@@ -12,7 +12,7 @@ Arouter.get("/users", getAllUser_1.getAllUser);
 //obtener usuario por ID
 Arouter.get("/user/:id", getUserById_1.getUserById);
 //crear un usuario
-Arouter.post("/users/register", createUser_1.createUser);
+Arouter.post("/users", createUser_1.createUser);
 //borrar un usuario
 Arouter.delete("/user/:id", deleteUser_1.deleteUser);
 //loguear un usuario

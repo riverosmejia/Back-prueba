@@ -16,9 +16,7 @@ exports.SavedUserInCredentialS = void 0;
 const CredentialRepository_1 = __importDefault(require("../../repositories/CredentialRepository"));
 const SavedUserInCredentialS = (user, credentialId) => __awaiter(void 0, void 0, void 0, function* () {
     // Buscar la credencial por su ID
-    const credential = yield CredentialRepository_1.default.findOne({
-        where: { id: credentialId },
-    });
+    const credential = yield CredentialRepository_1.default.findOne({ where: { id: credentialId } });
     // Si la credencial no existe, lanzar un error
     if (!credential) {
         throw new Error(`Credential with ID ${credentialId} not found.`);

@@ -1,12 +1,10 @@
 import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User";
-import { Moment } from "moment";
 
 /*
 
-    el enum se usa para valores finitos (en este caso, active o cancelled)
-    esto es para que no se llegue a usar nada de lo que no se debe usar
-
+  el enum se usa para valores finitos (en este caso, active o cancelled)
+  esto es para que no se llegue a usar nada de lo que no se debe usar
 
 */
 

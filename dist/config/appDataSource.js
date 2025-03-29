@@ -19,6 +19,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     entities: [User_1.User, Appointment_1.Appointment, Credential_1.Credential],
     subscribers: [],
     migrations: [],
+    ssl: true,
 });
 const getRepository = (entity) => {
     return exports.AppDataSource.getRepository(entity);

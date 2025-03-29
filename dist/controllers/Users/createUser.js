@@ -14,22 +14,12 @@ const createUserS_1 = require("../../services/User/createUserS");
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email, password, role, birthdate, nDni } = req.body; // Eliminar credentialsId
     try {
-        const newUser = yield (0, createUserS_1.createUserS)({
-            name,
-            email,
-            password,
-            role,
-            birthdate,
-            nDni,
-        }); // Crear el nuevo usuario
-        if (typeof newUser === "string") {
-            res.status(400).json({ message: newUser });
-        }
+        const newUser = yield (0, createUserS_1.createUserS)({ name, email, password, role, birthdate, nDni }); // Crear el nuevo usuario
         res.status(201).json(newUser); // Cambiar a 201 para indicar creación exitosa
     }
     catch (err) {
         const error = err;
-        // Manejo de errores
+        res.status(500).json({ message: error.message }); // Manejo de errores
     }
 });
 exports.createUser = createUser;
